@@ -4,6 +4,7 @@
   "description": "Logic programming for JavaScript",
   "main": "index.js",
   "scripts": {
+    "format": "prettier --write --ignore-path=.gitignore ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/kouMatsumoto/logic.js#readme",
   "devDependencies": {
+    "prettier": "^2.3.2",
     "typescript": "^4.4.2"
   }
 }
