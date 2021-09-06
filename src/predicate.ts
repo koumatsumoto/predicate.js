@@ -1,5 +1,8 @@
-export interface Predicate<A = any, B extends A = A> {
+export interface Predicate<A = any> {
   (value: A): boolean;
+}
+
+export interface Refinement<A = any, B extends A = A> {
   (value: A): value is B;
 }
 
