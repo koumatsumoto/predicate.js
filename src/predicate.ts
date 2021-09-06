@@ -15,3 +15,6 @@ export type ParamOf<Fs extends any[]> = Fs extends []
   : Fs extends [Predicate<infer A1>, Predicate<infer A2>, ...infer Rest]
   ? ParamOf<[Predicate<A1 & A2>, ...Rest]>
   : never;
+
+export const isNull = <V extends unknown | null>(value: V | null): value is null => value === null;
+export const isUndefined = <V extends unknown | undefined>(value: V | undefined): value is undefined => value === undefined;
