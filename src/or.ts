@@ -78,6 +78,6 @@ export function or<
   F7 extends Predicate,
   F8 extends Predicate,
 >(f1: F1, f2: F2, f3: F3, f4: F4, f5: F5, f6: F6, f7: F7, f8: F8): OrMany<[F1, F2, F3, F4, F5, F6, F7, F8]>;
-export function or<Fs extends Predicate[]>(...predicates: Fs): (value: any) => boolean {
-  return (value: any) => predicates.some((predicate) => predicate(value));
+export function or<Fs extends Predicate[]>(...predicates: Fs): OrMany<Fs> {
+  return ((value: any) => predicates.some((predicate) => predicate(value))) as OrMany<Fs>;
 }

@@ -1,6 +1,6 @@
 import { ParamOf, Predicate, Refinement } from './predicate';
 
-type Cond<F1 extends Predicate, F2 extends Predicate> = F1 extends Refinement<infer A1, infer B1>
+export type Cond<F1 extends Predicate, F2 extends Predicate> = F1 extends Refinement<infer A1, infer B1>
   ? F2 extends Refinement<infer A2, infer B2>
     ? Refinement<A1, B1 & B2>
     : F2 extends Predicate<infer A2>

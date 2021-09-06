@@ -29,7 +29,7 @@ export type MapToValidation<M extends Record<string, any>> = {
     : never;
 };
 
-export type CreateValidationFromRecord<M extends Record<string, any>> = ConcatValidations<TuplifyUnion<ValueOf<MapToValidation<M>>>>;
+export type CreateValidationFromRecord<M extends Record<string, Predicate>> = ConcatValidations<TuplifyUnion<ValueOf<MapToValidation<M>>>>;
 
 export const createValidation = <E extends string, F extends Predicate, Vn = CreateValidation<E, F>>(error: E, predicate: F): Vn => {
   return ((value: any) => (predicate(value) ? { valid: true, value, error: [] } : { valid: false, value, error: [error] })) as any as Vn;
@@ -48,13 +48,14 @@ export const concatValidations = <Fs extends Validation[], Vn = ConcatValidation
   }) as any as Vn;
 };
 
-export const getValidation = <
-  M extends Record<string, Predicate | Refinement>,
-  Vn extends CreateValidationFromRecord<M> = CreateValidationFromRecord<M>,
->(
+export interface GetValidationFromRecord {
+  <M extends Record<string, Predicate>>(m: M): CreateValidationFromRecord<M>;
+}
+
+export const getValidation: GetValidationFromRecord = <M extends Record<string, Predicate>, Vn = CreateValidationFromRecord<M>>(
   validationMap: M,
 ): Vn => {
   const validation = concatValidations(...Object.entries(validationMap).map(([error, predicate]) => createValidation(error, predicate))) as any;
 
-  return ((value) => validation(value)) as Vn;
+  return ((value: any) => validation(value)) as any as Vn;
 };

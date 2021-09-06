@@ -78,6 +78,6 @@ export function and<
   F7 extends Predicate,
   F8 extends Predicate,
 >(f1: F1, f2: F2, f3: F3, f4: F4, f5: F5, f6: F6, f7: F7, f8: F8): AndMany<[F1, F2, F3, F4, F5, F6, F7, F8]>;
-export function and<Fs extends Predicate[]>(...predicates: Fs): (value: any) => boolean {
-  return (value: any) => predicates.every((predicate) => predicate(value));
+export function and<Fs extends Predicate[]>(...predicates: Fs): AndMany<Fs> {
+  return ((value: any) => predicates.every((predicate) => predicate(value))) as AndMany<Fs>;
 }
