@@ -1,3 +1,3 @@
-# validation.ts
+# logical-validation
 
-Validation by Logic programming for TypeScript
+Validation with Logic programming for TypeScript
