@@ -1,8 +1,9 @@
+import { ValuesType } from 'utility-types';
 import { Predicate, Refinement } from './predicate';
-import { EmptyArray, NonEmptyArray, TuplifyUnion, ValueOf } from './types';
+import { TuplifyUnion } from './types';
 
 export interface Validation<E extends string = string, A = any, B extends A = A> {
-  <V extends A>(value: V): { valid: true; value: V & B; error: EmptyArray } | { valid: false; value: V; error: NonEmptyArray<E> };
+  <V extends A>(value: V): { valid: true; value: V & B; error: [] } | { valid: false; value: V; error: E[] };
 }
 
 export type CreateValidation<E extends string, Fn extends Predicate> = Fn extends Refinement<infer A, infer B>
@@ -29,7 +30,7 @@ export type MapToValidation<M extends Record<string, any>> = {
     : never;
 };
 
-export type CreateValidationFromRecord<M extends Record<string, Predicate>> = ConcatValidations<TuplifyUnion<ValueOf<MapToValidation<M>>>>;
+export type CreateValidationFromRecord<M extends Record<string, Predicate>> = ConcatValidations<TuplifyUnion<ValuesType<MapToValidation<M>>>>;
 
 export const createValidation = <E extends string, F extends Predicate, Vn = CreateValidation<E, F>>(error: E, predicate: F): Vn => {
   return ((value: any) => (predicate(value) ? { valid: true, value, error: [] } : { valid: false, value, error: [error] })) as any as Vn;

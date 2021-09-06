@@ -44,5 +44,8 @@
     "ts-essentials": "^8.1.0",
     "ts-jest": "^27.0.5",
     "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "utility-types": "^3.10.0"
   }
 }
