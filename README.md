@@ -1,3 +1,3 @@
-# logic.js
+# validation.ts
 
-Logic programming for JavaScript
+Validation by Logic programming for TypeScript

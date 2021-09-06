@@ -1,7 +1,7 @@
 {
-  "name": "logic.js",
+  "name": "validation.ts",
   "version": "0.0.1",
-  "description": "Logic programming for JavaScript",
+  "description": "Validation by Logic programming for TypeScript",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/es/index.js",
   "files": [
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kouMatsumoto/logic.js.git"
+    "url": "git+https://github.com/kouMatsumoto/validation.ts.git"
   },
   "keywords": [],
   "author": "Kou Matsumoto <developer@kou-matsumoto.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kouMatsumoto/logic.js/issues"
+    "url": "https://github.com/kouMatsumoto/validation.ts/issues"
   },
-  "homepage": "https://github.com/kouMatsumoto/logic.js#readme",
+  "homepage": "https://github.com/kouMatsumoto/validation.ts#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.15.4",
     "@rollup/plugin-babel": "^5.3.0",
