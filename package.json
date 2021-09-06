@@ -4,6 +4,7 @@
   "description": "Logic programming for JavaScript",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "format": "prettier --write --ignore-path=.gitignore ./",
     "lint": "eslint --ext=.ts --fix src",
     "test": "echo \"Error: no test specified\" && exit 1"
