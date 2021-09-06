@@ -15,5 +15,5 @@ type Cond<F1 extends Predicate, F2 extends Predicate> = F1 extends Refinement<in
   : never;
 
 export const cond = <F1 extends Predicate, F2 extends Predicate>(premise: F1, consequent: F2): Cond<F1, F2> => {
-  return ((value: ParamOf<F1, F2>) => (premise(value) ? consequent(value) : true)) as Cond<F1, F2>;
+  return ((value: ParamOf<[F1, F2]>) => (premise(value) ? consequent(value) : true)) as Cond<F1, F2>;
 };

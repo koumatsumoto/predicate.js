@@ -6,8 +6,12 @@ export interface Refinement<A = any, B extends A = A> {
   (value: A): value is B;
 }
 
-export type ParamOf<P1 extends Predicate, P2 extends Predicate> = P1 extends Predicate<infer A1>
-  ? P2 extends Predicate<infer A2>
-    ? A1 & A2
-    : never
+export type ParamOf<Fs extends any[]> = Fs extends []
+  ? never
+  : Fs extends [Predicate<infer A>]
+  ? A
+  : Fs extends [Predicate<infer A1>, Predicate<infer A2>]
+  ? A1 & A2
+  : Fs extends [Predicate<infer A1>, Predicate<infer A2>, ...infer Rest]
+  ? ParamOf<[Predicate<A1 & A2>, ...Rest]>
   : never;
