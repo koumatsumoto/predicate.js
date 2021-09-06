@@ -17,6 +17,7 @@ export default [
         babelHelpers: 'bundled',
       }),
       typescript({
+        exclude: ['src/**/*.spec.ts'],
         outDir: 'dist/commonjs',
         declaration: true,
       }),
@@ -33,6 +34,7 @@ export default [
     preserveModules: true,
     plugins: [
       typescript({
+        exclude: ['src/**/*.spec.ts'],
         outDir: 'dist/es',
         declaration: true,
       }),
