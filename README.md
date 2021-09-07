@@ -1,3 +1,3 @@
-# logical-validation
+# predicate.js
 
-Validation with Logic programming for TypeScript
+Predicate Logic with TypeScript

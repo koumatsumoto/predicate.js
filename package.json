@@ -1,7 +1,7 @@
 {
-  "name": "logical-validation",
+  "name": "predicate.js",
   "version": "0.1.1",
-  "description": "Validation with Logic programming for TypeScript",
+  "description": "Predicate Logic with TypeScript",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/es/index.js",
   "files": [
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kouMatsumoto/logical-validation.git"
+    "url": "git+https://github.com/kouMatsumoto/predicate.js.git"
   },
   "keywords": [],
   "author": "Kou Matsumoto <developer@kou-matsumoto.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kouMatsumoto/logical-validation/issues"
+    "url": "https://github.com/kouMatsumoto/predicate.js/issues"
   },
-  "homepage": "https://github.com/kouMatsumoto/logical-validation#readme",
+  "homepage": "https://github.com/kouMatsumoto/predicate.js#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.15.4",
     "@rollup/plugin-babel": "^5.3.0",
