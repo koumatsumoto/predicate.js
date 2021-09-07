@@ -17,9 +17,9 @@ export type ConcatValidations<Fs extends any[]> = Fs extends []
   : Fs extends [Validation<infer E, infer A, infer B>]
   ? Validation<E, A, B>
   : Fs extends [Validation<infer E1, infer A1, infer B1>, Validation<infer E2, infer A2, infer B2>]
-  ? Validation<E1 | E2, A1 & A2, B1 & B2>
+  ? Validation<E1 | E2, A1 | A2, B1 & B2>
   : Fs extends [Validation<infer E1, infer A1, infer B1>, Validation<infer E2, infer A2, infer B2>, ...infer Rest]
-  ? ConcatValidations<[Validation<E1 | E2, A1 & A2, B1 & B2>, ...Rest]>
+  ? ConcatValidations<[Validation<E1 | E2, A1 | A2, B1 & B2>, ...Rest]>
   : never;
 
 export type MapToValidation<M extends Record<string, any>> = {
