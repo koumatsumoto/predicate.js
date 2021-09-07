@@ -1,6 +1,6 @@
 {
   "name": "logical-validation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Validation with Logic programming for TypeScript",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/es/index.js",
