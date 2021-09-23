@@ -1,3 +1,5 @@
+import { UnionToIntersection, ValuesType } from 'utility-types';
+
 export interface Predicate<A = any> {
   (value: A): boolean;
 }
@@ -5,6 +7,20 @@ export interface Predicate<A = any> {
 export interface Refinement<A = any, B extends A = A> {
   (value: A): value is B;
 }
+
+export type MapPredicateInput<T extends any[]> = {
+  [P in keyof T as T[P] extends T[number] ? P : never]: T[P] extends Predicate<infer A> ? A : never;
+};
+export type MapRefinementResult<T extends any[]> = {
+  [P in keyof T as T[P] extends T[number] ? P : never]: T[P] extends Refinement<infer A, infer B> ? B : never;
+};
+export type FilterNever<T> = {
+  [P in keyof T as T[P] extends never ? never : P]: T[P];
+};
+
+export type PredicateInputs<Fs extends Predicate[]> = ValuesType<FilterNever<MapPredicateInput<Fs>>>;
+export type RefinementResults<Fs extends Predicate[]> = ValuesType<FilterNever<MapRefinementResult<Fs>>>;
+export type RefinementResultsIntersection<Fs extends Predicate[]> = UnionToIntersection<ValuesType<FilterNever<MapRefinementResult<Fs>>>>;
 
 export type ParamOf<Fs extends any[]> = Fs extends []
   ? never
