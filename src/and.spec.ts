@@ -1,6 +1,6 @@
 import { assert, IsExact } from 'conditional-type-checks';
 import { and } from './and';
-import { Refinement } from './predicate';
+import { isNotNull, Refinement } from './predicate';
 
 test('and', () => {
   const isA = (v: { a: string }): v is { a: 'a' } => v.a === 'a';
@@ -27,4 +27,12 @@ test('type check #2', () => {
 
   const shouldNever = and(isA, isB);
   assert<IsExact<typeof shouldNever, Refinement<string | number, never>>>(true);
+});
+
+test('type check #3', () => {
+  const isA = (v: { a: string }): v is { a: 'a' } => v.a === 'a';
+  const isC = (v: { c: number }): v is { c: 1 } => v.c === 1;
+  const isABC = and(isA, isC, isNotNull);
+
+  assert<IsExact<typeof isABC, Refinement<unknown, { a: 'a'; c: 1 }>>>(true);
 });
